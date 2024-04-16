@@ -15,13 +15,9 @@ class ContactAdapter(context: Context, private val contactList: MutableList<Cont
     ArrayAdapter<Contact>(context, R.layout.tile_contact, contactList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        //var tcb: TileContactBinding? = null
 
-
-        // pegar o contato no data source
         val contact = contactList[position]
 
-        // infla uma nova célula se necessário , onitemCreate igual soq context
         var contactTileView = convertView
         if (contactTileView == null){
             contactTileView = LayoutInflater.from(context).inflate(
@@ -36,17 +32,11 @@ class ContactAdapter(context: Context, private val contactList: MutableList<Cont
             }
         }
 
-        // colocar os valores de contato na célula
         (contactTileView?.tag as TileContactHolder).apply {
             nameTv.text = contact.name
             emailTv.text = contact.email
         }
 
-        // outro metodo
-        //tcb?.nameTv?.text = contact.name
-        //tcb?.emailTv?.text = contact.email
-
-        // retorna a célula preenchida
         return contactTileView!!
 
     }
